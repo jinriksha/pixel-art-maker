@@ -18,9 +18,9 @@ $('sizePicker').submit(function(event) {
 // Make grid based on user size input
 function makeGrid() {
   for (let i = 0; i < height; i++) {
-    $('#pixel_canvas').append("<tr> </tr>");
+    $('#pixel_canvas').append('<tr></tr>');
     for (let j = 0; j < width; j++) {
-      $('tr').append("<td> </td>");
+      $('tr').append('<td></td>');
     }
   }
 }
@@ -44,3 +44,7 @@ Expected pattern created by makeGrid function
 .
 .
 */
+
+$('td').on('click', function() {
+  css('background-color', color);
+});
