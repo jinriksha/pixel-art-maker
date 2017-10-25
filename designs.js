@@ -10,6 +10,7 @@ const canvas = $('#pixel_canvas');
 
 // When size is submitted by the user, call makeGrid()
 $('#sizePicker').submit(function(event) {
+  // Prevent default behavior
   event.preventDefault();
   makeGrid();
 });
