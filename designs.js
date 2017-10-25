@@ -1,50 +1,36 @@
 // Select color input
-const color = $('#colorPicker').val();
+const color = $('#colorPicker');
 
 // Select size input
-const height = $('#input_height').val();
-const width = $('#input_width').val();
+const height = $('#input_height');
+const width = $('#input_width');
+
+// Select table
+const canvas = $('#pixel_canvas');
 
 // When size is submitted by the user, call makeGrid()
-
-$('sizePicker').submit(function(event) {
-  // Prevent default
+$('#sizePicker').submit(function(event) {
   event.preventDefault();
-
-  // Call the makeGrid function
   makeGrid();
 });
 
 // Make grid based on user size input
 function makeGrid() {
-  for (let i = 0; i < height; i++) {
-    $('#pixel_canvas').append('<tr></tr>');
-    for (let j = 0; j < width; j++) {
-      $('tr').append('<td></td>');
+  clearGrid();
+  for(let i = 0; i < height.val(); i++) {
+    canvas.append('<tr id="row' + i +'"></tr>');
+    for(let j = 0; j < width.val(); j++) {
+      $('#row' + i).append('<td></td>');
     }
   }
 }
 
-/*
-Expected pattern created by makeGrid function
+// Clear any previous grid
+function clearGrid() {
+    canvas.empty();
+}
 
-<tr>
-  <td></td>
-  .
-  .
-  .
-</tr>
-<tr>
-  <td></td>
-  .
-  .
-  .
-</tr>
-.
-.
-.
-*/
-
-$('td').on('click', function() {
-  css('background-color', color);
+// When user clicks on td elements change css color value to user selected value
+canvas.on('click', 'td', function(event) {
+    $(this).css('background-color', color.val());
 });
